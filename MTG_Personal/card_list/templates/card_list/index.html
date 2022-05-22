@@ -1,0 +1,31 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card List</title>
+    <link rel="stylesheet" href="{% static 'card_list/style.css' %}">
+</head>
+<body>
+    <h1>MTG Card Collection</h1>
+    {% for card in cards%}
+        <table>
+            <tr>
+                <td>{{card.name}}</td>
+                <td>{{card.price}}</td>
+            </tr>
+            <tr>
+                <td>{{card.effect}}</td>
+            </tr>
+            <tr>
+                <td>{{card.color}}</td>
+                <td>{{card.card_type}}</td>
+                <td>{{card.mana_value}}</td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    {% endfor %}
+</body>
+</html>
