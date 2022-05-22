@@ -1,3 +1,11 @@
 body{
     background: url('images/card-list-background.jpg') no-repeat center center fixed;
 }
+
+div.foil-badge{
+    background-color: black;
+}
+
+div.indeck-badge{
+    background-color: blue;
+}
