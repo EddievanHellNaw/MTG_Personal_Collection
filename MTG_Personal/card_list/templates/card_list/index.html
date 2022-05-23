@@ -22,15 +22,14 @@
                 <td>{{card.card_type}}</td>
                 <td>{{card.mana_value}}</td>
             </tr>
-            {% if card.foil %}
-            <tr>
-                <td><div class="foil-badge">foil</div></td>
-                {% if card.in_deck%}
-                <td><div class="indeck-badge">In Deck</div></td>
-                {% endif %}
-            </tr>
-            {% endif %}
+            
         </table>
+        {% if card.foil %}
+                <div class="foil-badge">F</div>
+                {% if card.in_deck%}
+                    <div class="indeck-badge">InD</div>
+                {% endif %}
+            {% endif %}
     {% endfor %}
 </body>
 </html>
