@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{card.name}}</title>
+    <title>{{result.name}}</title>
     <link rel="stylesheet" href="{% static 'card_list/style.css' %}">
 </head>
 <body>
     <h1 style="font-size: 45px">Search Result</h1>
 
     
-
+    <a href="">Go Back</a>
     {% for result in results %}    
     <div class="card-item">
         <div class="card-name">{{result.name}}</div>
