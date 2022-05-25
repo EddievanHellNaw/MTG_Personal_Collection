@@ -8,20 +8,25 @@
     <link rel="stylesheet" href="{% static 'card_list/style.css' %}">
 </head>
 <body>
-    <h1>MTG Card Collection</h1>
-    <input type="text" id="fname" name="fname" value="Search...">
+    <h1 style="font-size: 45px">MTG Card Collection</h1>
+    <form action="{% url 'card_search' %}" method="POST">
+        {% csrf_token %} 
+        <input type="text" name="name" placeholder="Search card by name">
+        <input type="submit" name="submit" value="Search">
+    </form>
     {% for card in cards%}
         <div class="card-item">
             <div class="card-name">{{card.name}}</div>
             <div class="card-quantity">Quantity: {{card.quantity}}</div>
-            <div class="card-picture"><img src="{{card.card_pic.url}}" alt="{{card.name}}"></div>
-            <div class="card-effect">{{card.effect}}
-                <br>
+            <div class="card-picture"><img src="{{card.card_pic.url}}" height= "150px"width= "120px"alt="{{card.name}}"></div>
+            <div class="card-effect">{{card.effect}}</div>
+            <div class="card-badges">
                 {% if card.foil %}
-                <div class="foil-badge">F</div>
+                    <div class="foil-badge">Foil</div>
+                {% endif %}
+
                 {% if card.in_deck%}
                     <div class="indeck-badge">InD</div>
-                {% endif %}
                 {% endif %}
             <div class="condition-badge">{{card.card_condition}}</div>
             </div>            

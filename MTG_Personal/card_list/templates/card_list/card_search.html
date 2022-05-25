@@ -1,0 +1,37 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{card.name}}</title>
+    <link rel="stylesheet" href="{% static 'card_list/style.css' %}">
+</head>
+<body>
+    <h1 style="font-size: 45px">Search Result</h1>
+
+    
+
+    {% for result in results %}    
+    <div class="card-item">
+        <div class="card-name">{{result.name}}</div>
+        <div class="card-quantity">Quantity: {{result.quantity}}</div>
+        <div class="card-picture"><img src="{{result.card_pic.url}}" height= "150px"width= "120px"alt="{{card.name}}"></div>
+        <div class="card-effect">{{result.effect}}</div>
+        <div class="card-badges">
+            {% if result.foil %}
+                <div class="foil-badge">Foil</div>
+            {% endif %}
+
+            {% if result.in_deck%}
+                <div class="indeck-badge">InD</div>
+            {% endif %}
+        <div class="condition-badge">{{result.card_condition}}</div>
+        </div>            
+        
+        <div class="card-price">Price: ${{result.price}} USD</div>
+    </div>
+
+    {% endfor %}
+</body>
+</html>
