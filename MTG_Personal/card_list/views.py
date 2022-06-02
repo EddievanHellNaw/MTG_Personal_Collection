@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Card
+import schedule
+import time
 from selenium import webdriver                    
 from selenium.webdriver.common.by import By  
 from webdriver_manager.chrome import ChromeDriverManager
@@ -8,9 +10,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 # Create your views here.
 def index(request):
     cards = Card.objects.exclude(name__exact='')
-    # for each in cards:
-    #     get_card_price(each)
+    schedule.every().thursday.at("12:53").do(scheduled_price_update(cards))
     return render(request, 'card_list/index.html', {'cards': cards})
+    
 
 def search_by_name(request):
     if request.method == "POST":
@@ -18,10 +20,13 @@ def search_by_name(request):
 
         if query_name:
             results = Card.objects.filter(name__contains=query_name)
-            print(results.count())
-            print("I'm here")
     return render(request,'card_list/card_search.html',{"results":results})
 
+
+def scheduled_price_update(cards):
+    print("Updating Prices")
+    for each in cards:
+        get_card_price(each)
 
 def get_card_price(card):
     
@@ -81,3 +86,8 @@ def get_card_price(card):
 
 
     browser.quit()
+
+# while True:
+#     print("Checking for scheduled Update")
+#     schedule.run_pending()
+#     time.sleep(1)
