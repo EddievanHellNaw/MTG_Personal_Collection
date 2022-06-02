@@ -8,21 +8,20 @@ from webdriver_manager.chrome import ChromeDriverManager
 # Create your views here.
 def index(request):
     cards = Card.objects.exclude(name__exact='')
-    for each in cards:
-        get_card_price(each)
+    # for each in cards:
+    #     get_card_price(each)
     return render(request, 'card_list/index.html', {'cards': cards})
 
-def card_search(request):
+def search_by_name(request):
     if request.method == "POST":
-        query_name = request.POST.get('name',None)
-        query_type = request.POST.get('card_type',None)
+        query_name = request.POST.get('name')
+
         if query_name:
             results = Card.objects.filter(name__contains=query_name)
-            return render(request,'card_list/card_search.html',{"results":results})
-        if query_type:
-            results = Card.objects.filter(name__contains=query_type)
-            return render(request,'card_list/card_search.html',{"results":results})
-    return render(request,'card_list/card_search.html')
+            print(results.count())
+            print("I'm here")
+    return render(request,'card_list/card_search.html',{"results":results})
+
 
 def get_card_price(card):
     

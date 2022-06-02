@@ -18,17 +18,26 @@
         <div class="card-item">
             <div class="card-name">{{card.name}}</div>
             <div class="card-quantity">Quantity: {{card.quantity}}</div>
-            <div class="card-picture"><img src="{{card.card_pic.url}}" height= "150px"width= "120px"alt="{{card.name}}"></div>
+            <div class="card-picture"><img src="{{card.card_pic.url}}" height= "220px"width= "170px"alt="{{card.name}}"></div>
             <div class="card-effect">{{card.effect}}</div>
             <div class="card-badges">
                 {% if card.foil %}
-                    <div class="foil-badge">Foil</div>
+                    <div class="foil-display">
+                        <img class="foil-icon"src="{% static 'card_list/images/foil-stars.png' %}" alt="foil-icon">
+                        <p class="hide">Foil</p>
+                    </div>                    
                 {% endif %}
 
                 {% if card.in_deck%}
-                    <div class="indeck-badge">InD</div>
+                <div class="foil-display">
+                    <img class="foil-icon"src="{% static 'card_list/images/Indeck.png' %}" alt="foil-icon">
+                    <p class="hide">In-Deck</p>
+                </div> 
                 {% endif %}
-            <div class="condition-badge">{{card.card_condition}}</div>
+                <div class="foil-display">
+                    <img class="foil-icon"src="{% static 'card_list/images/near-mint.png' %}" alt="foil-icon">
+                    <p class="hide">NM</p>
+                </div>
             </div>            
             
             <div class="card-price">Price: {{card.price}} USD</div>

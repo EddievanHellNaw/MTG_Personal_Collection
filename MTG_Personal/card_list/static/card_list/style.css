@@ -13,7 +13,7 @@ div.card-item{
     margin-left: 50px;
     margin-top: 20px;
     margin-bottom: 50px;
-    transition: all .2s ease-in-out; 
+    transition: all .4s ease-in-out; 
 }
 
 div.card-item:hover{
@@ -40,12 +40,13 @@ div.card-quantity{
 
 div.card-effect{
     font-size: 18px;
-    padding-left: 15%;
+    padding-left: 34%;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
     width: 45%;
     position: relative;
     top: -45px;
-    padding-right: 10px;
-    padding-bottom: 20px;
     display: inline-block;
 }
 
@@ -53,96 +54,84 @@ div.card-picture{
     width: 20%;
     height: 100px;
     width: 100px;
-    margin-top: 20px;
+    margin-top: 45px;
     margin-left: 50px;
-    display: inline-block
+    padding-bottom: 10px;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+}
+
+.card-picture:hover{
+    transform: scale(2);
+    transition-delay: 0.2s;
+    transition-duration: 0.4s; 
 }
 
 div.card-badges{
-    display: inline-block;
-    margin-left: 50%;
+    margin-left: 32%;
     margin-top: 0px;
+    margin-bottom: 20px;
     padding-top: 0px;
+    margin-right: 5%;
+    width: fit-content;
 }
 
-div.foil-badge{
+.foil-display{
     display: inline-block;
-    color: white;
-    text-align: center;
-    height: 15px;
+    height: 30px;
     width: 30px;
-    border-radius: 15% 15%;
-    border: 2px solid black;
-    left:0;
-    right: 0;
-    top: 0;
-    bottom: 0;
     position: relative;
     margin-top: 15px;
-    margin-right: 8px;
-    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-    background-size: 1800% 1800%;
-
-    -webkit-animation: rainbow 18s ease infinite;
-    -z-animation: rainbow 18s ease infinite;
-    -o-animation: rainbow 18s ease infinite;
-    animation: rainbow 18s ease infinite;
-}
-
-@-webkit-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-moz-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-o-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@keyframes rainbow { 
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-
-div.indeck-badge{
-    display: inline-block;
-    text-align: center;
-    color: white;
-    border: 2px solid black;
-    height: 15px;
-    width: 30px;
-    border-radius: 15% 15%;
-    position: relative;
-    margin-top: 15px;
-    margin-left: 15px;
+    margin-left: 1px;
     margin-right: 20px;
-    background: rgb(180, 179, 209);
-    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    margin-bottom: 10px;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+    text-align: center;
 }
 
-div.condition-badge{
+.foil-icon{
+    position: absolute;
     display: inline-block;
-    text-align: center;
-    color: white;
-    height: 15px;
+    height: 30px;
     width: 30px;
-    margin-top: 15px;
-    border-radius: 15% 15%;
-    border: 2px solid black;
-    position: relative;
-    background: rgb(2,0,36);
-    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(17,201,7,1) 44%, rgba(9,37,3,1) 100%);
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-right: 20px;
 }
+
+.foil-display:hover{
+    transform: scale(.85);
+}
+
+.hide{
+    display: none;
+    margin-top: 0px;
+    transition-delay: 0.2s;
+    transition-duration: 0.4s;
+}
+
+.foil-display:hover .hide{
+    display: block;
+    position: absolute;
+    opacity: 1;
+    transform: translateY(2px);
+    -webkit-transform: translateY(2px);
+}
+
 
 div.card-price{
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    padding-left: 20px;
-    margin-left: 25px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 1%;
+    margin-left: 75%;
+    
 }
