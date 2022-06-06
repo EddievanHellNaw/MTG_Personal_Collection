@@ -9,10 +9,10 @@
 </head>
 <body>
     <h1 style="font-size: 45px">MTG Card Collection</h1>
-    <form action="{% url 'card_search' %}" method="POST">
+    <form class="search-bar"action="{% url 'card_search' %}" method="POST">
         {% csrf_token %} 
-        <input type="text" name="name" placeholder="Search card by name">
-        <input type="submit" name="submit" value="Search">
+        <input  type="text" name="name" placeholder="Search card by name">
+        <input  type="image" name="submit" src="{% static 'card_list/images/search-button.png' %}">
     </form>
     {% for card in cards%}
         <div class="card-item">

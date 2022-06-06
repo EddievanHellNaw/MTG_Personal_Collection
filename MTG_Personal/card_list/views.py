@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Card
 import schedule
 import time
+import threading
 from selenium import webdriver                    
 from selenium.webdriver.common.by import By  
 from webdriver_manager.chrome import ChromeDriverManager
@@ -10,9 +11,25 @@ from webdriver_manager.chrome import ChromeDriverManager
 # Create your views here.
 def index(request):
     cards = Card.objects.exclude(name__exact='')
-    schedule.every().thursday.at("12:53").do(scheduled_price_update(cards))
+    schedule.every().wednesday.at("13:00").do(scheduled_price_update,cards)
+    stop_run_continuously = run_continuously()
+    time.sleep(10)
+    stop_run_continuously.set()
     return render(request, 'card_list/index.html', {'cards': cards})
     
+def run_continuously(interval=1):
+    cease_continuous_run = threading.Event()
+
+    class ScheduleThread(threading.Thread):
+        @classmethod
+        def run(cls):
+            while not cease_continuous_run.is_set():
+                schedule.run_pending()
+                time.sleep(interval)
+
+    continuous_thread = ScheduleThread()
+    continuous_thread.start()
+    return cease_continuous_run
 
 def search_by_name(request):
     if request.method == "POST":
@@ -27,6 +44,7 @@ def scheduled_price_update(cards):
     print("Updating Prices")
     for each in cards:
         get_card_price(each)
+
 
 def get_card_price(card):
     
@@ -87,7 +105,3 @@ def get_card_price(card):
 
     browser.quit()
 
-# while True:
-#     print("Checking for scheduled Update")
-#     schedule.run_pending()
-#     time.sleep(1)

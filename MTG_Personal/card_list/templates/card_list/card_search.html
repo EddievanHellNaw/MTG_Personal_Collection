@@ -11,12 +11,12 @@
     <h1 style="font-size: 45px">Search Result</h1>
 
     
-    <a href="">Go Back</a>
+    <a href="{% url 'index' %}">Go Back</a>
     {% for result in results %}
     <div class="card-item">
         <div class="card-name">{{result.name}}</div>
         <div class="card-quantity">Quantity: {{result.quantity}}</div>
-        <div class="card-picture"><img src="{{result.card_pic.url}}" height= "200px"width= "150px"alt="{{result.name}}"></div>
+        <div class="card-picture"><img src="{{result.card_pic.url}}" height= "220px"width= "170px"alt="{{result.name}}"></div>
         <div class="card-effect">{{result.effect}}</div>
         <div class="card-badges">
             {% if result.foil %}

@@ -4,6 +4,21 @@ body{
     font-family: Futura;
 }
 
+input[type="text"]{
+    border: 1px solid #272424;
+    border-radius: 10px;
+    transition: background-color 0.5s ease-out;
+    padding: 10px 10px;
+}
+
+input[type="image"]{
+    position: relative;
+    width:15px;
+    height:15px;
+    left: -30px;
+    bottom: -3px;
+}
+
 div.card-item{
     background: #222121c4;
     height: max-content;
