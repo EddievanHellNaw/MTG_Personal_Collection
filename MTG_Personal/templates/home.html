@@ -1,0 +1,22 @@
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>MTG Collection</title>
+</head>
+<body>
+
+    <h1 style="font-size: 50px"></h1>MTG Collection</h1>
+
+    <a href="{% url 'index' %}">Check all cards</a>
+    
+    <form class="search-bar" action="{% url 'card_search' %}" method="get">
+        {{ results.form.as_p }}
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

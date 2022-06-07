@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from card_list.models import Card
 import django_filters
+from django.views.generic import TemplateView, ListView
 
 # Create your views here.
 def index (request):
-    pass
+    results = CardFilter(request.GET, queryset=Card.objects.all())
+    return render(request, 'templates/home.html', {'results':results})
 
 class CardFilter(django_filters.FilterSet):
+
     name=django_filters.CharFilter(field_name='name', lookup_expr='icontains')
     expansion=django_filters.CharFilter(field_name='expansion_name', lookup_expr='icontains')
     color=django_filters.CharFilter(field_name='color', lookup_expr='icontains')
@@ -16,3 +19,11 @@ class CardFilter(django_filters.FilterSet):
     class Meta:
         model = Card
         fields = ['expansion_name','name','color','foil','card_type']
+
+
+class HomePageView(TemplateView):
+    template_name = 'home.html'
+
+class SearchResultsView(ListView):
+    model = Card
+    template_name = 'card_search.html'

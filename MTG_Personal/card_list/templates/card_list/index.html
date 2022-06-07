@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card List</title>
-    <link rel="stylesheet" href="{% static 'card_list/style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
     <h1 style="font-size: 45px">MTG Card Collection</h1>
     <form class="search-bar"action="{% url 'card_search' %}" method="POST">
         {% csrf_token %} 
         <input  type="text" name="name" placeholder="Search card by name">
-        <input  type="image" name="submit" src="{% static 'card_list/images/search-button.png' %}">
+        <input  type="image" name="submit" src="{% static 'images/search-button.png' %}">
     </form>
     {% for card in cards%}
         <div class="card-item">
@@ -23,19 +23,19 @@
             <div class="card-badges">
                 {% if card.foil %}
                     <div class="foil-display">
-                        <img class="foil-icon"src="{% static 'card_list/images/foil-stars.png' %}" alt="foil-icon">
+                        <img class="foil-icon"src="{% static 'images/foil-stars.png' %}" alt="foil-icon">
                         <p class="hide">Foil</p>
                     </div>                    
                 {% endif %}
 
                 {% if card.in_deck%}
                 <div class="foil-display">
-                    <img class="foil-icon"src="{% static 'card_list/images/Indeck.png' %}" alt="foil-icon">
+                    <img class="foil-icon"src="{% static 'images/Indeck.png' %}" alt="foil-icon">
                     <p class="hide">In-Deck</p>
                 </div> 
                 {% endif %}
                 <div class="foil-display">
-                    <img class="foil-icon"src="{% static 'card_list/images/near-mint.png' %}" alt="foil-icon">
+                    <img class="foil-icon"src="{% static 'images/near-mint.png' %}" alt="foil-icon">
                     <p class="hide">NM</p>
                 </div>
             </div>            

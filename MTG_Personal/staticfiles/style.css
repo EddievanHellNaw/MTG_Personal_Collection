@@ -1,0 +1,152 @@
+body{
+    background: url('images/card_list_background.jpg') no-repeat center center fixed;
+    color: white;
+    font-family: Futura;
+}
+
+input[type="text"]{
+    border: 1px solid #272424;
+    border-radius: 10px;
+    transition: background-color 0.5s ease-out;
+    padding: 10px 10px;
+}
+
+input[type="image"]{
+    position: relative;
+    width:15px;
+    height:15px;
+    left: -30px;
+    bottom: -3px;
+}
+
+div.card-item{
+    background: #222121c4;
+    height: max-content;
+    width: 65%;
+    border-radius: 15px;
+    box-shadow: 10px 10px 5px #272424;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    transition: all .4s ease-in-out; 
+}
+
+div.card-item:hover{
+    transform: scale(1.05); 
+    box-shadow: 5px 5px 5px #272424;
+}
+
+div.card-name{
+    font-size: 27px;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-top: 2px;
+    width: 50%;
+    display: inline-block;
+}
+
+div.card-quantity{
+    font-size: 20px;
+    font-weight: bold;
+    width: fit-content;
+    display: inline-block;
+    margin-left: 25%;
+}
+
+div.card-effect{
+    font-size: 18px;
+    padding-left: 34%;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    width: 45%;
+    position: relative;
+    top: -45px;
+    display: inline-block;
+}
+
+div.card-picture{
+    width: 20%;
+    height: 100px;
+    width: 100px;
+    margin-top: 45px;
+    margin-left: 50px;
+    padding-bottom: 10px;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+}
+
+.card-picture:hover{
+    transform: scale(2);
+    transition-delay: 0.2s;
+    transition-duration: 0.4s; 
+}
+
+div.card-badges{
+    margin-left: 32%;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding-top: 0px;
+    margin-right: 5%;
+    width: fit-content;
+}
+
+.foil-display{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    margin-top: 15px;
+    margin-left: 1px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+    text-align: center;
+}
+
+.foil-icon{
+    position: absolute;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-right: 20px;
+}
+
+.foil-display:hover{
+    transform: scale(.85);
+}
+
+.hide{
+    display: none;
+    margin-top: 0px;
+    transition-delay: 0.2s;
+    transition-duration: 0.4s;
+}
+
+.foil-display:hover .hide{
+    display: block;
+    position: absolute;
+    opacity: 1;
+    transform: translateY(2px);
+    -webkit-transform: translateY(2px);
+}
+
+
+div.card-price{
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 1%;
+    margin-left: 75%;
+    
+}

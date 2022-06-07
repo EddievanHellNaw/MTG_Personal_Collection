@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'card_list.apps.CardListConfig',
+    'main.apps.MainConfig',
     'django_filters',
 ]
 
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'MTG_Personal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates", BASE_DIR / "static"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,6 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = STATIC_ROOT = BASE_DIR / "staticfiles" 
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage" 
 MEDIA_ROOT =  (BASE_DIR) 
 MEDIA_URL = 'media/'
 
