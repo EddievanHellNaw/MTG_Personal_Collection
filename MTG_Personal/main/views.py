@@ -1,29 +1,27 @@
+from unittest import result
 from django.shortcuts import render
 from card_list.models import Card
 import django_filters
-from django.views.generic import TemplateView, ListView
+from . import scrapper
 
 # Create your views here.
-def index (request):
+def main (request):
     results = CardFilter(request.GET, queryset=Card.objects.all())
-    return render(request, 'templates/home.html', {'results':results})
+    cards = Card.objects.all()
+    scrapper.schedule_price_update(cards)
+    return render(request, 'home.html', {'results': results})
+
+def cardFilter(request):
+    results = CardFilter(request.GET, queryset=Card.objects.all())
+    return render(request, 'card_search.html', {'results':results})
+    
 
 class CardFilter(django_filters.FilterSet):
-
-    name=django_filters.CharFilter(field_name='name', lookup_expr='icontains')
-    expansion=django_filters.CharFilter(field_name='expansion_name', lookup_expr='icontains')
-    color=django_filters.CharFilter(field_name='color', lookup_expr='icontains')
-    card_type=django_filters.CharFilter(field_name='card_type', lookup_expr='icontains')
-    foil=django_filters.BooleanFilter(field_name='foil', lookup_expr='True')
-
+    foil=django_filters.BooleanFilter(field_name='foil')
     class Meta:
         model = Card
-        fields = ['expansion_name','name','color','foil','card_type']
-
-
-class HomePageView(TemplateView):
-    template_name = 'home.html'
-
-class SearchResultsView(ListView):
-    model = Card
-    template_name = 'card_search.html'
+        fields = {'name': ['contains'],
+                  'expansion_name':['contains'],
+                  'color':['contains'],
+                  'card_type':['contains']
+        }

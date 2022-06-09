@@ -6,14 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card List</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    
 </head>
+
 <body>
-    <h1 style="font-size: 45px">MTG Card Collection</h1>
-    <form class="search-bar"action="{% url 'card_search' %}" method="POST">
-        {% csrf_token %} 
-        <input  type="text" name="name" placeholder="Search card by name">
-        <input  type="image" name="submit" src="{% static 'images/search-button.png' %}">
-    </form>
+    <div class="header">
+
+        <h1>All Cards</h1>
+
+        <section class="layout">
+            <div class="grow2">
+                <a href="{% url 'home' %}">Search</a> 
+            </div>
+          </section>
+
+    </div>
+    <button onClick="topFunction()" id="myBtn">Top</button>
     {% for card in cards%}
         <div class="card-item">
             <div class="card-name">{{card.name}}</div>
@@ -44,5 +52,9 @@
         </div>
         
     {% endfor %}
+    
+    {% block scripts %}
+    <script src="{% static 'js/scrollTop.js' %}"></script>
+    {% endblock %}    
 </body>
 </html>

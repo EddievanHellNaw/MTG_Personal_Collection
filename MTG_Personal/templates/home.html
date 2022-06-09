@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,15 +7,33 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>MTG Collection</title>
 </head>
+
 <body>
 
-    <h1 style="font-size: 50px"></h1>MTG Collection</h1>
+    <div class="header">
 
-    <a href="{% url 'index' %}">Check all cards</a>
+        <h1>MTG Collection</h1>
+
+        <section class="layout">
+            <div class="grow1">
+                <a href="{% url 'index' %}">All cards</a> 
+            </div>
+            <div class="grow1">
+                <a href="{% url 'home' %}">Search</a> 
+            </div>
+          </section>
+
+    </div>
     
-    <form class="search-bar" action="{% url 'card_search' %}" method="get">
-        {{ results.form.as_p }}
-        <input type="submit" value="Search">
-    </form>
+    <div class="search-box">
+        <h2>Card Search</h2>
+        
+            <form action="{% url 'card_search' %}" method="get">
+                <div class="info-box"> {{ results.form.as_p }}</div>          
+                <input class="submit-button" type="submit" value="Search">
+            </form>
+        
+        
+    </div>   
 </body>
 </html>

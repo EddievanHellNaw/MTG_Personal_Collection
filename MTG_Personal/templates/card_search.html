@@ -8,11 +8,24 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h1 style="font-size: 45px">Search Result</h1>
+    
 
+    <div class="header">
+
+        <h1>Search Result(s)</h1>
+
+        <section class="layout">
+            <div class="grow1">
+                <a href="{% url 'index' %}">All cards</a> 
+            </div>
+            <div class="grow1">
+                <a href="{% url 'home' %}">Search</a> 
+            </div>
+          </section>
+
+    </div>
     
-    <a href="{% url 'index' %}">Check all cards</a>
-    
+    <button onClick="topFunction()" id="myBtn">Top</button>    
     {% for result in results.qs %}
     <div class="card-item">
         <div class="card-name">{{result.name}}</div>
@@ -42,5 +55,8 @@
         <div class="card-price">Price: {{result.price}} USD</div>
     </div>
     {% endfor %}
+    {% block scripts %}
+    <script src="{% static 'js/scrollTop.js' %}"></script>
+    {% endblock %} 
 </body>
 </html>

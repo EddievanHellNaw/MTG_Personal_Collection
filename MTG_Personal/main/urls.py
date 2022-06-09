@@ -1,11 +1,13 @@
 from django.urls import path, re_path
-from .views import HomePageView, SearchResultsView
+from django_filters.views import FilterView
+from card_list.models import Card
 from . import views
 
 
 
+
 urlpatterns = [
-    path('search/',SearchResultsView.as_view(), name="card_search"),
-    path("", HomePageView.as_view(), name="home"),
-    re_path(r'^list$', views.index),
+    path("",views.main,name="home"),
+    path("search/",views.cardFilter,name="card_search"),
+    re_path(r'^list$', FilterView.as_view(model=Card)),
 ]
