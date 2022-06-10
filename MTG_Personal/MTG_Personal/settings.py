@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-ve(wr5_ya*3oz4%3h%$(obr2#3@i5^w3@qfvub-f60f!3fv091
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["https://eddie-mtg-collection.herokuapp.com"]
+ALLOWED_HOSTS = ["eddie-mtg-collection.herokuapp.com/"]
 
 
 # Application definition
@@ -51,6 +51,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -122,8 +124,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),"media"]
-STATIC_ROOT = STATIC_ROOT = BASE_DIR / "staticfiles" 
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage" 
+STATIC_ROOT = BASE_DIR / "staticfiles" 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT =  (BASE_DIR) 
 MEDIA_URL = 'media/'
 

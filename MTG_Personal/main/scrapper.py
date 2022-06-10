@@ -7,7 +7,7 @@ import os
 
 
 def schedule_price_update(cards):
-    schedule.every().thursday.at("18:40").do(scheduled_price_update,cards)
+    schedule.every().thursday.at("22:40").do(scheduled_price_update,cards)
     stop_run_continuously = run_continuously()
     time.sleep(3)
     stop_run_continuously.set()
@@ -43,8 +43,7 @@ def get_card_price(card):
     browser_options.add_argument("--headless")
     browser_options.add_argument("--disable-dev-shm-usage")
     browser_options.add_argument("--no-sandbox")
-    browser = webdriver.Chrome(
-        executable_path=os.environ.get("CHROMEDRIVER_PATH"),
+    browser = webdriver.Chrome(service=Service(executable_path=os.environ.get("CHROMEDRIVER_PATH")),
         options=browser_options)
     browser.get(url)
     browser.implicitly_wait(0.2)
