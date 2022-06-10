@@ -3,13 +3,13 @@ import time
 import threading
 from selenium import webdriver                    
 from selenium.webdriver.common.by import By  
-from webdriver_manager.chrome import ChromeDriverManager
+import os
 
 
 def schedule_price_update(cards):
-    schedule.every().wednesday.at("12:30").do(scheduled_price_update,cards)
+    schedule.every().thursday.at("18:40").do(scheduled_price_update,cards)
     stop_run_continuously = run_continuously()
-    time.sleep(10)
+    time.sleep(3)
     stop_run_continuously.set()
     return cards
 
@@ -39,11 +39,15 @@ def get_card_price(card):
     url = 'https://starcitygames.com/'
 
     browser_options = webdriver.ChromeOptions()
+    browser_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     browser_options.add_argument("--headless")
-    # browser = webdriver.Chrome(ChromeDriverManager().install())
-    browser = webdriver.Chrome(options=browser_options)
+    browser_options.add_argument("--disable-dev-shm-usage")
+    browser_options.add_argument("--no-sandbox")
+    browser = webdriver.Chrome(
+        executable_path=os.environ.get("CHROMEDRIVER_PATH"),
+        options=browser_options)
     browser.get(url)
-    browser.implicitly_wait(20)
+    browser.implicitly_wait(0.2)
     browser.maximize_window()
 
     print("Finding card...")
@@ -60,7 +64,8 @@ def get_card_price(card):
     if card.foil:
         print("Checking if Foil...")
         try:
-            foil_select=browser.find_element(By.XPATH, '//*[@id="hawkfacet_finish"]/li[1]/a')
+            time.sleep(5)
+            foil_select= browser.find_element(By.XPATH, '//*[@id="hawkfacet_finish"]/li[1]/a')
             link = foil_select.get_attribute("href")
             print("It's Foil")
             browser.get(link)
@@ -69,6 +74,7 @@ def get_card_price(card):
             return
     else:
         try:
+            time.sleep(5)
             foil_select=browser.find_element(By.XPATH, '//*[@id="hawkfacet_finish"]/li[2]/a')
             link = foil_select.get_attribute("href")
             print("It's not foil")
@@ -76,7 +82,7 @@ def get_card_price(card):
         except:
             print("Something went wrong")
             return            
-
+    time.sleep(5)
     cards = browser.find_elements(By.CLASS_NAME,"hawk-results-item")
     
     for each in cards:

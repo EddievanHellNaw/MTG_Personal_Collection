@@ -1,8 +1,8 @@
-from unittest import result
 from django.shortcuts import render
 from card_list.models import Card
 import django_filters
 from . import scrapper
+from django.http import JsonResponse
 
 # Create your views here.
 def main (request):
@@ -25,3 +25,7 @@ class CardFilter(django_filters.FilterSet):
                   'color':['contains'],
                   'card_type':['contains']
         }
+
+def post_json(request):
+    data = list(Card.objects.values())
+    return JsonResponse(data,safe=False)

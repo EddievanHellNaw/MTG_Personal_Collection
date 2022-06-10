@@ -5,55 +5,26 @@ body{
     margin: 0px 0px 0px 0px;
 }
 
-.loader,
-        .loader:after {
-            border-radius: 50%;
-            width: 10em;
-            height: 10em;
-        }
-        .loader {            
-            margin: 60px auto;
-            font-size: 10px;
-            position: relative;
-            text-indent: -9999em;
-            border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-            border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-            border-left: 1.1em solid #ffffff;
-            -webkit-transform: translateZ(0);
-            -ms-transform: translateZ(0);
-            transform: translateZ(0);
-            -webkit-animation: load8 1.1s infinite linear;
-            animation: load8 1.1s infinite linear;
-        }
-        @-webkit-keyframes load8 {
-            0% {
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-        @keyframes load8 {
-            0% {
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-        #loadingDiv {
-            position:absolute;
-            top: 0;
-            left:0;
-            width:100%;
-            height:100%;
-            background-color:#000;
-        }
+.hidden{
+    display: none;
+}
+
+#spinner-box{
+    text-align: center;
+    font-size: 32px;
+    background-color: #272424c5;
+    height: 100%;
+    width: 100%;
+}
+.spinner-grow{
+    position: absolute;
+    background-color: #6B7280;
+    top: 40%;
+    left: 45%;
+    height: 150px;
+    width: 150px;
+
+}
 
 .header{
     position: fixed;
@@ -149,8 +120,8 @@ input:focus, select:focus{
 }
 
 div.search-box{
-    position: relative;
-    top: 70%;
+    position: absolute;
+    top: 500px;
     left: 50%;
     width: 400px;
     padding: 40px;
@@ -362,10 +333,18 @@ div.card-price{
 
 @media only screen and (max-width: 765px){
 
+    .spinner-grow{
+        background-color: #6B7280;
+        top: 30%;
+        left: 38%;
+        height: 100px;
+        width: 100px;
+    }
+
     .header{
         position: sticky;
         background: #1d1c1cec;
-        height: 111px;
+        height: 100px;
         width: 100%;
         margin-left: -10px;
         margin-top: -10px;
@@ -379,8 +358,8 @@ div.card-price{
     }
 
     div.search-box{
-        position: relative;
-        top: 30%;
+        position: absolute;
+        top: 55%;
     }
 
     .grow1, .grow2 { 

@@ -9,5 +9,6 @@ from . import views
 urlpatterns = [
     path("",views.main,name="home"),
     path("search/",views.cardFilter,name="card_search"),
+    path('json_data/', views.post_json, name="json_data_view"),
     re_path(r'^list$', FilterView.as_view(model=Card)),
 ]
